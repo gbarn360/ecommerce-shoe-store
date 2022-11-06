@@ -5,7 +5,7 @@ const app = express();
 //allows for server to have access to post/put requests
 app.use(express.urlencoded({extended:false}));
 app.use(express.json());
-//sfsdf
+
 //list of users
 const members = [
 {email: "gbarn360@gmail.com",password: "1234567"}
