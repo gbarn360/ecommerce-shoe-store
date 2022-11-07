@@ -6,28 +6,28 @@ const Account = ({ credentials }) => {
 
 
   const navigate = useNavigate();
-  const[email,setEmail] = useState("");
-  const[password,setPassword] = useState("");
-  const[res,setResponse] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [res, setResponse] = useState("");
 
-  const sendInfo = ()=>{
+  const sendInfo = () => {
 
-  const requestOptions = {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ email:email,password:password })
-};
+    const requestOptions = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email: email, password: password })
+    };
 
-  fetch("/apiPost",requestOptions)
-  .then(response => response.json())
-  .then(data => setResponse(data.message));
-}
-  
-  
+    fetch("/apiPost", requestOptions)
+      .then(response => response.json())
+      .then(data => setResponse(data.message));
+  }
+
+
 
   return (
     <div>
-        <NavBar />
+      <NavBar />
 
       <div className="accountContainer">
         <div className="centerfocus">
@@ -35,15 +35,15 @@ const Account = ({ credentials }) => {
           <h1 className="signInText">Welcome back</h1>
 
           <div className="emailContainer">
-            <input id="signinEmail" className="signinEmail" placeholder="Email" onChange={(e)=>setEmail(e.target.value)}/>
+            <input id="signinEmail" className="signinEmail" placeholder="Email" onChange={(e) => setEmail(e.target.value)} />
           </div>
 
           <div className="passwordContainer">
-            <input id="signinPassword" className="signinPassword" placeholder="Password"onChange={(e)=>setPassword(e.target.value)} />
+            <input id="signinPassword" className="signinPassword" placeholder="Password" onChange={(e) => setPassword(e.target.value)} />
           </div>
 
           <div className="signInButtonContainer">
-            <button className="signinButton" onClick={()=>{ credentials();sendInfo()}}>Sign in</button>
+            <button className="signinButton" onClick={() => { credentials(); sendInfo() }}>Sign in</button>
           </div>
 
 
@@ -56,9 +56,9 @@ const Account = ({ credentials }) => {
             <div className="result">{res == "found" ? navigate("/") : res}</div>
           </div>
         </div>
-        
+
       </div>
-      
+
     </div>
   );
 }
