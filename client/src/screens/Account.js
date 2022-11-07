@@ -43,7 +43,7 @@ const Account = ({ credentials }) => {
           </div>
 
           <div className="signInButtonContainer">
-            <button className="signinButton" onClick={() => { credentials(); sendInfo() }}>Sign in</button>
+            <button className="signinButton" onClick={() => { var result = credentials(); if (result == true) sendInfo() }}>Sign in</button>
           </div>
 
 

@@ -27,7 +27,7 @@ function App() {
     else { //invalid email
       document.getElementById("signinEmail").placeholder = "Invalid email address";
       document.getElementById("signinEmail").value = "";
-      return;
+      return false;
     }
 
     if (password.length > 6) { //check if password is atleast 7 characters long
@@ -37,9 +37,9 @@ function App() {
     else { //invalid password
       document.getElementById("signinPassword").placeholder = "must be atleast 7 characters";
       document.getElementById("signinPassword").value = "";
-      return;
+      return false;
     }
-
+    return true;
   };
   return (
 

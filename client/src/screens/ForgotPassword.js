@@ -6,23 +6,23 @@ import NavBar from "../components/Navbar";
 
 const ForgotPassword = () => {
 
-    
+
     const [email, setEmail] = useState();
-    const [res,setResponse] = useState();
+    const [res, setResponse] = useState();
     const navigate = useNavigate();
 
-    const sendInfo = ()=>{
+    const sendInfo = () => {
 
         const requestOptions = {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ email:email })
-      };
-      
-        fetch("/apiForgotPassword",requestOptions)
-        .then(response => response.json())
-        .then(data => setResponse(data.message));
-      }
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email: email })
+        };
+
+        fetch("/apiForgotPassword", requestOptions)
+            .then(response => response.json())
+            .then(data => setResponse(data.message));
+    }
 
 
     const credentials = () => {
@@ -30,13 +30,14 @@ const ForgotPassword = () => {
 
         if (email.toString().indexOf("@") >= 0) { //check if email contains '@'
             document.getElementById("signinEmail").placeholder = "Email";
-           
+
         }
         else {
             document.getElementById("signinEmail").placeholder = "Invalid email address";
             document.getElementById("signinEmail").value = "";
-            return;
+            return false;
         }
+        return true;
     }
     return (
 
@@ -48,14 +49,14 @@ const ForgotPassword = () => {
                     <h1 className="signInText">Enter Email</h1>
 
                     <div className="emailContainer">
-                        <input className="signinEmail" id="signinEmail" placeholder="email" onChange={(e)=>setEmail(e.target.value)} />
+                        <input className="signinEmail" id="signinEmail" placeholder="email" onChange={(e) => setEmail(e.target.value)} />
                     </div>
 
                     <div className="signInButtonContainer">
-                        <button className="signinButton" onClick={()=>{credentials();sendInfo()}}>Reset</button>
+                        <button className="signinButton" onClick={() => { var result = credentials(); if (result == true) sendInfo() }}>Reset</button>
                     </div>
 
-                    <div className = "resultContainer">
+                    <div className="resultContainer">
                         <p className="result">{res}</p>
                     </div>
                 </div>

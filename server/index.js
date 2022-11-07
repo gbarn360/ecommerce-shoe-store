@@ -86,6 +86,16 @@ app.post("/apiForgotPassword", (req, res) => { //forgot password post request (i
     const email = req.body.email;
     console.log(email);
 
+    var result = checkMemberExists(email);
+    if (result == true) {
+        res.json({ message: "An email has been sent to update password" });
+        return;
+    }
+    //else
+
+    res.json({ message: "Account not found" });
+    return;
+
 
 
 });
