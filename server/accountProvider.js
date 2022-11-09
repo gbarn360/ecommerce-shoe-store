@@ -4,39 +4,43 @@ const mongoose = require("mongoose");
 const MongoDB_URL = "mongodb+srv://admin:patel@sikewearcluster.r7rsoch.mongodb.net/?retryWrites=true&w=majority";
 
 
-const newAccountSchema = {
+const connectDB = async () => {
+    await mongoose.connect(MongoDB_URL,{
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+    })
+}
+
+connectDB();
+
+const newAccountSchema = new mongoose.Schema({
     email: String,
     password: String,
-};
+});
 
 const AccountCreation = mongoose.model("Accounts", newAccountSchema);
 
 const AccountProvider = class {
 
     //checks to see if user exists (sign in)
-    checkMembers(email, password) {
+    async checkMembers(email, password) {
 
         let result;
 
-        result = AccountCreation.collection.count({
-            email: email,
-            password: password
-        })
-        console.log(result);
-        return result;
+        result = await AccountCreation.count({email:email});
+
+      return result;
     }
 
     //checks to see if user has an account already (create account)
-    checkMemberExists(email) {
+    async checkMemberExists (email){
 
         let result;
 
-        result = AccountCreation.collection.count({
-            email: email,
-            password: password
-        })
-        console.log(result);
-        return result;
+      result = await AccountCreation.count({email:email});
+
+      return result;
+        
     }
 
 
@@ -46,6 +50,7 @@ const AccountProvider = class {
     }
 
     createAccount(email, password) {
+
         const newAccount = new AccountCreation({
             email: email,
             password: password
@@ -58,5 +63,4 @@ const AccountProvider = class {
 
     }
 }
-
 module.exports = { AccountProvider };
