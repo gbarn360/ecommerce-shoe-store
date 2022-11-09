@@ -1,47 +1,18 @@
 const express = require('express');
 const app = express();
-
+const { AccountProvider } = require("./accountProvider"); //access mongodb js file
 
 //allows for server to have access to post/put requests
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
-//list of users
-const members = [
-    { email: "gbarn360@gmail.com", password: "1234567" }
-]
 
-//checks to see if user exists (sign in)
-function checkMembers(email, password) {
+const provider = new AccountProvider(); //mongodb class instance
 
-    let result;
-    members.forEach((entry) => { //for each member, compare its email and password with that of the post request
-        if (entry.email === email && entry.password === password) {
-            result = true;
-        }
-        else {
-            result = false;
-        }
-    })
-    return result;
-}
 
-//checks to see if user has an account already (create account)
-function checkMemberExists(email) {
 
-    let result;
-    members.forEach((entry) => {
-        if (entry.email === email) {
-            result = true;
-        }
-        else {
-            result = false;
-        }
-    })
-    return result;
-}
 
 app.get("/members", (req, res) => { //gets all members 
-    res.json(members);
+
 })
 
 
@@ -51,7 +22,8 @@ app.post("/apiPost", (req, res) => { //sign in post request
 
     console.log(email, password);
 
-    var result = checkMembers(email, password); //check membership
+    var result = provider.checkMembers(email, password); //check membership
+
     if (result == true) {
 
         res.json({ message: "found" }); //respond with success message
@@ -68,14 +40,14 @@ app.post("/apiNewAccount", (req, res) => { //create new account post request
 
     console.log(email, password);
 
-    var result = checkMemberExists(email);
-    if (result == true) {
-        res.json({ message: "Account already exists" }); //respond with error message
-        return;
-    }
-    //else
-    const newMember = { email: email, password: password }; //create new member, push into members array
-    members.push(newMember);
+    // var result = provider.checkMemberExists(email);
+
+    // if (result == true) { //account already exists
+    //     res.json({ message: "Account already exists" }); //respond with error message
+    //     return;
+    // }
+    // else
+    provider.createAccount(email, password); //save account to database
     res.json({ message: "Account created successfully" }); //respond with success message
     return;
 
