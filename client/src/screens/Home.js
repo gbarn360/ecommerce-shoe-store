@@ -1,10 +1,11 @@
+import { useEffect } from "react";
 import NavBar from "../components/Navbar";
 
-
 function Home() {
+
   return (
     <div>
-      <NavBar />
+      <NavBar  />
       <div className="homepageContainer">
         <div className="logoContainer">
           <h1>SIKE</h1>

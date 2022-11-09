@@ -8,6 +8,7 @@ import NotFound from "./screens/NotFound";
 import NewAccount from "./screens/NewAccount"
 import ResetPassword from "./screens/ForgotPassword"
 import Shoe_one from "./screens/shoe_one"
+import UserPage from "./screens/UserPage";
 import "./App.css";
 
 function App() {
@@ -46,13 +47,14 @@ function App() {
     <Router>
 
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Home/>}   />
         <Route path="/shop" element={<Shop />} />
         <Route path="/shop/shoe_one" element={<Shoe_one />} />
         <Route path="/account" element={<Account credentials={checkCredentials} />} />
         <Route path="/shoppingCart" element={<ShoppingCart />} />
         <Route path="/account/newAccount" element={<NewAccount credentials={checkCredentials} />} />
         <Route path="/account/resetPassword" element={<ResetPassword />} />
+        <Route path="/UserPage" element={<UserPage />} />
         <Route path="*" element={<NotFound />} />
 
       </Routes>
