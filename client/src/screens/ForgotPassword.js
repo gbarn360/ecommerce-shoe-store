@@ -18,7 +18,7 @@ const ForgotPassword = () => {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ email: email })
         };
-
+        
         fetch("/apiForgotPassword", requestOptions)
             .then(response => response.json())
             .then(data => setResponse(data.message));

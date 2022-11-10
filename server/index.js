@@ -1,6 +1,8 @@
+//const { application } = require('express');
 const express = require('express');
 const app = express();
 const { AccountProvider } = require("./accountProvider"); //access mongodb js file
+const {ShoesCreator} = require("./shoesProvider");
 
 //allows for server to have access to post/put requests
 app.use(express.urlencoded({ extended: false }));
@@ -8,8 +10,9 @@ app.use(express.json());
 
 const provider = new AccountProvider(); //mongodb class instance
 
+const creator = new ShoesCreator();
 
-
+creator.addShoe("patelom1022@gmail.com", "Sike", "Sir Force", 10, "shoe1", 124.99, 100, "Black");
 
 app.get("/members", (req, res) => { //gets all members 
 
@@ -64,19 +67,46 @@ app.post("/apiForgotPassword", (req, res) => { //forgot password post request (i
     const email = req.body.email;
     console.log(email);
 
-    var result = checkMemberExists(email);
-    if (result == true) {
-        res.json({ message: "An email has been sent to update password" });
-        return;
-    }
-    //else
-
-    res.json({ message: "Account not found" });
-    return;
-
+    provider.checkMemberExists(email)
+    .then( result => {
+        if (result == 1) {
+            res.json({ message: "An email has been sent to update password" });
+            provider.forgotPassword(email);
+            return;
+        }
+        if (result == 0) {
+            res.json({ message: "Account not found" });
+            return;
+        }
+    }) 
 
 
 });
+
+app.post("/api/addShoe", (req, res) => {
+    const providerEmail = req.body.email;
+    const brandName = req.body.brand;
+    const shoeName = req.body.shoeName;
+    const shoeSize = req.body.shoeSize;
+    const shoePicURL = req.body.shoeURL;
+    const price = req.body.price;
+    const quantity = req.body.quantity;
+    const color = req.body.color;
+
+    creator.addShoe(providerEmail, brandName, shoeName, shoeSize, shoePicURL, price, quantity, color) 
+    .then(result => {
+        if(result == 1) {
+            res.json({message: "Shoe already exists!"});
+            return;
+        }
+        if(result == 0) {
+            creator.addShoe(providerEmail, brandName, shoeName, shoeSize, shoePicURL, price, quantity, color);
+            res.json({message: "Shoe has been added!"});
+            return; 
+        }
+    })
+});
+
 
 app.listen(3081, () => {
     console.log(`listening at http://localhost:${3081}`);
