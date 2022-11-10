@@ -73,6 +73,10 @@
   display: flex;
   justify-content: center;
 }
+.passwordContainer {
+  display: flex;
+  justify-content: center;
+}
 
 .signinEmail {
   height: 25px;

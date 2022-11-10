@@ -62,17 +62,21 @@ app.post("/apiNewAccount", (req, res) => { //create new account post request
 
 app.post("/apiForgotPassword", (req, res) => { //forgot password post request (in progress)
     const email = req.body.email;
+    const newPassword = req.body.newPassword;
+
     console.log(email);
+    console.log(newPassword);
 
-    var result = checkMemberExists(email);
-    if (result == true) {
-        res.json({ message: "An email has been sent to update password" });
-        return;
-    }
-    //else
+    provider.forgotPassword(email,newPassword)
+    // var result = checkMemberExists(email);
+    // if (result == true) {
+    //     res.json({ message: "An email has been sent to update password" });
+    //     return;
+    // }
+    // //else
 
-    res.json({ message: "Account not found" });
-    return;
+    // res.json({ message: "Account not found" });
+    // return;
 
 
 
