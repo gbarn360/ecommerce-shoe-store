@@ -23,16 +23,16 @@ app.post("/apiPost", (req, res) => { //sign in post request
     console.log(email, password);
 
     provider.checkMembers(email, password)//check membership
-    .then(result=>{
-        if (result == true) {
+        .then(result => {
+            if (result == true) {
 
-            res.json({ message: "found" }); //respond with success message
+                res.json({ message: "found" }); //respond with success message
+                return;
+            }
+            res.json({ message: "Account not found" }); //respond with error message
             return;
-        }
-        res.json({ message: "Account not found" }); //respond with error message
-        return;
-    })
-    
+        })
+
 
 })
 
@@ -40,23 +40,22 @@ app.post("/apiPost", (req, res) => { //sign in post request
 app.post("/apiNewAccount", (req, res) => { //create new account post request
     const email = req.body.email;
     const password = req.body.password;
-    const result = 6;
     console.log(email, password);
 
     provider.checkMemberExists(email)
-    .then(result =>{
-        if (result == 1) { //account already exists
-            res.json({ message: "Account already exists" }); //respond with error message
-            return;
-        }
-        if(result == 0) { //account doesn't exist
-            provider.createAccount(email, password); //save account to database
-            res.json({ message: "Account created successfully" }); //respond with success message
-            return;
-        }
-    })
-    
-   
+        .then(result => {
+            if (result == 1) { //account already exists
+                res.json({ message: "Account already exists" }); //respond with error message
+                return;
+            }
+            if (result == 0) { //account doesn't exist
+                provider.createAccount(email, password); //save account to database
+                res.json({ message: "Account created successfully" }); //respond with success message
+                return;
+            }
+        })
+
+
 })
 
 
@@ -82,6 +81,6 @@ app.listen(3081, () => {
     console.log(`listening at http://localhost:${3081}`);
 });
 
-process.on("unhandledRejection",err=>{
+process.on("unhandledRejection", err => {
     console.log(`an error occurred: ${err.message}`)
 })

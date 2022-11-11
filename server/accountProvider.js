@@ -5,7 +5,7 @@ const MongoDB_URL = "mongodb+srv://admin:patel@sikewearcluster.r7rsoch.mongodb.n
 
 
 const connectDB = async () => {
-    await mongoose.connect(MongoDB_URL,{
+    await mongoose.connect(MongoDB_URL, {
         useNewUrlParser: true,
         useUnifiedTopology: true,
     })
@@ -27,20 +27,20 @@ const AccountProvider = class {
 
         let result;
 
-        result = await AccountCreation.count({email:email});
+        result = await AccountCreation.count({ email: email, password: password });
 
-      return result;
+        return result;
     }
 
     //checks to see if user has an account already (create account)
-    async checkMemberExists (email){
+    async checkMemberExists(email) {
 
         let result;
 
-      result = await AccountCreation.count({email:email});
+        result = await AccountCreation.count({ email: email });
 
-      return result;
-        
+        return result;
+
     }
 
 
