@@ -9,6 +9,7 @@ const ForgotPassword = () => {
 
     const [email, setEmail] = useState();
     const [res, setResponse] = useState();
+    const [newPassword, setPassword] = useState();
     const navigate = useNavigate();
 
     const sendInfo = () => {
@@ -16,7 +17,7 @@ const ForgotPassword = () => {
         const requestOptions = {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ email: email })
+            body: JSON.stringify({ email: email, newPassword: newPassword})
         };
 
         fetch("/apiForgotPassword", requestOptions)
@@ -27,7 +28,7 @@ const ForgotPassword = () => {
 
     const credentials = () => {
         let email = document.getElementById("signinEmail").value; //get email
-
+        let newPassword = document.getElementById("changePassword").value; // get new password
         if (email.toString().indexOf("@") >= 0) { //check if email contains '@'
             document.getElementById("signinEmail").placeholder = "Email";
 
@@ -52,8 +53,18 @@ const ForgotPassword = () => {
                         <input className="signinEmail" id="signinEmail" placeholder="email" onChange={(e) => setEmail(e.target.value)} />
                     </div>
 
+                    <div className="passwordContainer">
+                        <input className="changePassword" id="changePassword" placeholder="new password" onChange={(e) => setPassword(e.target.value)} />
+                    </div>
+
                     <div className="signInButtonContainer">
-                        <button className="signinButton" onClick={() => { var result = credentials(); if (result == true) sendInfo() }}>Reset</button>
+                        <button className="signinButton" onClick={() => { var result = credentials(); 
+                            if (result == true) {
+                                sendInfo()
+                            } 
+                            }}>
+                            Reset
+                        </button>
                     </div>
 
                     <div className="resultContainer">
