@@ -12,7 +12,8 @@ const provider = new AccountProvider(); //mongodb class instance
 
 const creator = new ShoesCreator();
 
-creator.addShoe("patelom1022@gmail.com", "Sike", "Sir Force", 10, "shoe1", 124.99, 100, "Black");
+// creator.addShoe("patelom1022@gmail.com", "Sike", "Sir Force", 10, "shoe1", 124.99, 100, "Black");
+// creator.addShoe("gbarn","SIKE","oldskool",11,"this",1000,100,"purple");
 
 app.get("/members", (req, res) => { //gets all members 
 
@@ -20,7 +21,7 @@ app.get("/members", (req, res) => { //gets all members
 
 
 app.post("/apiPost", (req, res) => { //sign in post request
-    const email = req.body.email; //get email
+    const email = req.body.email; //get emails
     const password = req.body.password; //get password
 
     console.log(email, password);
@@ -107,6 +108,10 @@ app.post("/api/addShoe", (req, res) => {
             return; 
         }
     })
+});
+
+app.get('/shop/shoes',(req,res)=>{
+    creator.getShoes().then(result => res.json(result));
 });
 
 

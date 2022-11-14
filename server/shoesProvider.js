@@ -57,5 +57,16 @@ const ShoesCreator = class {
         });
         newShoe.save();
     }
+
+    async getShoes(){
+        const data = await ShoesCreation.find();
+        const count = await ShoesCreation.count();
+        var shoes = new Object();
+
+        for(let i = 0; i < count; i++){
+            shoes[i] = {brand:data[i].brandName, name:data[i].shoeName,price:data[i].price, color: data[i].color};
+        }       
+        return shoes;
+    }
 }
 module.exports = {ShoesCreator};

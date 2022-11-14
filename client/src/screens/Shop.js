@@ -3,17 +3,22 @@ import Dropdown from "../components/Dropdown";
 import React, { useState,useEffect } from "react";
 
 
-
-
-
 function Shop() {
 
   
   const[data,setData] = useState();
+
+
+  async function getShoes(){
+  
+    let getInfo =  await fetch("/shop/shoes")
+    let result = getInfo.json();
+    
+     return result;
+  }
+
   useEffect(()=>{
-   fetch("/api")
-   .then((res)=>res.json())
-   .then((data)=>setData(data))
+    getShoes().then(result =>setData(result))
   },[]);
   
 
@@ -41,48 +46,14 @@ function Shop() {
             </div>
             <div className="item">
               <Dropdown />
+              {!data ? " " :data[0].name}
             </div>
             <div className="item">
               <Dropdown />
+              {!data ? " " :data[1].name}
             </div>
+            
           </div>
-
-          <div className="row">
-            <div className="item">
-              <Dropdown />
-            </div>
-            <div className="item">
-              <Dropdown />
-            </div>
-            <div className="item">
-              <Dropdown />
-            </div>
-          </div>
-
-          <div className="row">
-            <div className="item">
-              <p className="mens">WOM</p>
-
-            </div>
-            <div className="item">
-              <Dropdown />
-            </div>
-            <div className="item">
-              <Dropdown />
-            </div>
-          </div>
-          <div className="row">
-            <div className="item">
-              <Dropdown />
-            </div>
-            <div className="item">
-              <Dropdown />
-            </div>
-            <div className="item">
-              <Dropdown />
-            </div>
-          </div>
-
 
         </div>
 
