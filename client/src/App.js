@@ -36,7 +36,7 @@ function App() {
       document.getElementById("signinPassword").placeholder = "Password";
     }
     else { //invalid password
-      document.getElementById("signinPassword").placeholder = "must be atleast 7 characters";
+      document.getElementById("signinPassword").placeholder = "must be at least 7 characters";
       document.getElementById("signinPassword").value = "";
       return false;
     }
