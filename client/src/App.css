@@ -306,11 +306,21 @@
 }
 
 
+/* =================================================================*/
+/*shoe_one */
 .shoe_background {
-  background-color: black;
+  background-color: rgb(227, 227, 227);
   min-height: 600px;
   min-height: 500px;
 
+}
+.shoeHeaderContainer{
+ background-color: rgb(227, 227, 227) ;
+}
+
+.shoeHeader{
+  font-size: 100px;
+  padding: 50px;
 }
 
 canvas {

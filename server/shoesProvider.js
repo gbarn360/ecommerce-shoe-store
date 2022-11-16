@@ -61,7 +61,7 @@ const ShoesCreator = class {
     async getShoes(){
         const data = await ShoesCreation.find();
         const count = await ShoesCreation.count();
-        var shoes = new Object();
+        var shoes = new Array();
 
         for(let i = 0; i < count; i++){
             shoes[i] = {brand:data[i].brandName, name:data[i].shoeName,price:data[i].price, color: data[i].color};

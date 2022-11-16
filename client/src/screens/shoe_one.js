@@ -4,6 +4,8 @@ import ModelRenderer from "../components/shoe_one_model"
 import {Canvas} from '@react-three/fiber'
 import {Stage} from '@react-three/drei'
 import { OrbitControls } from "@react-three/drei";
+import {useLocation} from 'react-router-dom';
+
 import '../App.css'
 /*
 function Shoe_one() {
@@ -15,11 +17,17 @@ function Shoe_one() {
 */
 
 function Shoe_one() {
+
+  const location = useLocation();
+
   return (
     <div>
       <NavBar/>
+      <div className="shoeHeaderContainer">
+        <h1 className="shoeHeader">{location.state.shoeInfo.name}</h1>
+      </div>
       <Canvas className="shoe_background" camera={{fov:50,zoom:1.3, near: 1, far:1000}}>
-        <OrbitControls enableZoom={false} autoRotate={true}/>
+        <OrbitControls enableZoom={false} autoRotate={false}/>
         <Suspense fallback={null}>
           <Stage>
             <ModelRenderer />
