@@ -8,7 +8,6 @@ function Shop() {
 
   
   const[data,setData] = useState([]);
-  const[test,setTest] = useState([{name:"grant"},{name:"bryce"},{name:"jordan"}]);
 
   async function getShoes(){
   
@@ -43,7 +42,6 @@ function Shop() {
     
           <div className="row">
             {!data ? " " :data.map((item)=>(<ShoeContainer shoeInfo={item}/>))}
-
           </div>
 
         </div>
