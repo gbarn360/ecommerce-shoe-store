@@ -70,7 +70,7 @@
   "scripts": {
     "start": "node server/index.js",
     "dev": "nodemon index ",
-    "nodemon":"nodemon index.js"
+    "nodemon": "nodemon index.js"
   },
   "keywords": [],
   "author": "",

@@ -1,4 +1,5 @@
 * {
+  font-family: Gill Sans, sans-serif;
   margin: 0;
   padding: 0;
 }
@@ -9,15 +10,23 @@
   position: relative;
   width: auto;
   height: 45px;
-  background-color: rgb(41, 39, 39);
+  background-color: #151515;
+  padding-top: 10px;
   display: flex;
   justify-content: flex-start;
+  font-weight: bold;
 }
 
 .navElements a {
   text-decoration: none;
-  padding: 40px;
+  padding: 20px 40px 18px;
   color: aliceblue;
+  transition: 0.3s;
+}
+
+.navElements a:hover {
+  background-color: white;
+  color: red;
 }
 
 .navElements {
@@ -27,16 +36,45 @@
 
 .bag {
   text-decoration: none;
-  padding: 40px;
+  padding: 36px 40px 18px;
   color: white;
   margin-top: -30px;
   font-size: 21px;
+  transition: 0.3s;
+  font-weight: bold;
+}
+
+.bag:hover {
+  background-color: white;
+  color: red;
 }
 
 .bagContainer {
   display: flex;
   justify-content: flex-end;
   width: 100%;
+}
+
+/* banner video home ===================================================*/
+.back-video {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+}
+
+@media (min-aspect-ratio: 16/9) {
+  .back-video {
+    width: 100%;
+    height: auto;
+  }
+}
+
+@media (max-aspect-ratio: 16/9) {
+  .back-video {
+    width: auto;
+    height: 100%;
+  }
 }
 
 /* =================================================================*/
@@ -66,7 +104,7 @@
   justify-content: center;
   padding: 40px;
   padding-top: 80px;
-  color: #363535;
+  color: #151515;
 }
 
 .emailContainer {
@@ -129,7 +167,7 @@
   border: none;
   background-color: rgb(163, 244, 163);
   font-size: 20px;
-  color: #383838;
+  color: #151515;
   font-weight: 500;
 
 }
@@ -143,12 +181,12 @@
 .createAccountButton {
   margin-right: 25%;
   text-decoration: none;
-  color: #383838;
+  color: #151515;
 }
 
 .forgotPasswordButton {
   text-decoration: none;
-  color: #383838;
+  color: #151515;
 
 }
 .resultContainer{
@@ -284,35 +322,45 @@
 /* =================================================================*/
 /*Home*/
 .categoryContainer {
-  margin-top: 20px;
+  padding: 90px;
   display: flex;
   flex-direction: row;
   justify-content: center;
+  text-align: center;
+  font-weight: bold;
+  font-size: 25px;
+  color: white;
+  text-shadow: 1px 1px 8px black, 0 0 15px black, 0 0 5px black;
 }
 
 .category {
-  border: solid 2px #363535;
-  padding: 50px 70px 20px;
-  margin: 2% 5%;
-  border-radius: 10px;
-  transition: background-color .5s, padding .5s, font-size .5s, color .5s;
+  border: solid 2px antiquewhite;
+  padding: 0 30px 50px;
+  margin: 2% 6%;
+  border-radius: 20px;
+  transition: background-color .5s, padding .3s, font-size .3s, color .5s;
+  -webkit-backdrop-filter: blur(8px) brightness(0.9);
+}
+
+.category img {
+  width: 60%;
+  height: auto;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .category:hover {
-  background-color: red;
-  padding: 20px 70px 50px;
-  font-size: 20px;
-  color: white;
+  background-color: rgba(255, 0, 0, 0.8);
+  padding: 0 30px 50px;
+  -webkit-backdrop-filter: blur(8px) brightness(1.5);
 }
-
 
 /* =================================================================*/
 /*shoe_one */
 .shoe_background {
-  background-color: rgb(227, 227, 227);
-  min-height: 600px;
+  background-color: black;
   min-height: 500px;
-
 }
 .shoeHeaderContainer{
  background-color: rgb(227, 227, 227) ;
@@ -332,24 +380,28 @@ canvas {
   text-align: center;
 }
 
-
-
 .logoContainer h1 {
   color: red;
   font-size: 180px;
   margin-bottom: -20px;
   letter-spacing: 10px;
+  padding-top: 40px;
+  text-shadow: 1px 1px 2px white, 0 0 25px white, 0 0 5px white;
 }
 
 .logoContainer h3 {
-  font-size: 80px;
+  font-size: 94px;
+  padding-bottom: 30px;
+  text-shadow: 1px 1px 2px white, 0 0 25px white, 0 0 5px white;
 }
 
 .slogan {
   margin-top: 20px;
-  font-size: 20px;
+  font-size: 30px;
+  font-weight: bold;
+  color: white;
+  text-shadow: 1px 1px 8px black, 0 0 15px black, 0 0 5px black;
 }
-
 
 /* =================================================================*/
 /*Shop*/
@@ -369,7 +421,7 @@ canvas {
   /*contains all shoe panels and slideshow panel*/
   width: 90%;
   height: auto;
-  background-color: #383838;
+  background-color: #151515;
   flex-direction: column;
   display: flex;
   align-items: center;
@@ -412,7 +464,7 @@ canvas {
 
 .item:hover .panelRise {
   height: 25%;
-  color: #383838;
+  color: #151515;
 
 }
 
@@ -457,6 +509,54 @@ canvas {
 .mens {
   font-size: 120px;
   overflow: hidden;
+}
+
+
+/* Footer ==============================================================*/
+
+.footerContainer {
+  position: relative;
+  width: 100%;
+  color: white;
+  background: #151515;
+  min-height: 100px;
+  display: block;
+  justify-content: center;
+  align-items: center;
+}
+
+.menuContainer {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px 0;
+  flex-wrap: wrap;
+}
+
+.menuContainer li {
+  list-style: none;
+}
+
+.menuContainer li a {
+  padding: 30px 30px 5px;
+  font-size: 1.4em;
+  color: white;
+  margin: 0 10px;
+  display: inline-block;
+  transition: 0.3s;
+  text-decoration: none;
+  opacity: 0.5;
+}
+
+.menuContainer li a:hover {
+  opacity: 1;
+}
+
+.footerContainer p {
+  text-align: center;
+  font-size: 1.1em;
+  padding: 20px 40px 20px;
 }
 
 /* =================================================================*/
