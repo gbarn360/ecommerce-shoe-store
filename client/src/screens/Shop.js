@@ -1,13 +1,13 @@
 import NavBar from "../components/Navbar";
 import Dropdown from "../components/Dropdown";
-import React, { useState,useEffect } from "react";
+import ShoeContainer from "../components/ShoeContainer";
+import React, { useState,useEffect} from "react";
 
 
 function Shop() {
 
   
-  const[data,setData] = useState();
-
+  const[data,setData] = useState([]);
 
   async function getShoes(){
   
@@ -19,10 +19,11 @@ function Shop() {
 
   useEffect(()=>{
     getShoes().then(result =>setData(result))
+      
+ 
+   
   },[]);
   
-
-
 
   return (
     <div >
@@ -38,21 +39,9 @@ function Shop() {
           <div className="panel">
             slideshow pics
           </div>
-
-
+    
           <div className="row">
-            <div className="item" href="mens">
-              <p className="mens" >MENS</p>
-            </div>
-            <div className="item">
-              <Dropdown />
-              {!data ? " " :data[0].name}
-            </div>
-            <div className="item">
-              <Dropdown />
-              {!data ? " " :data[1].name}
-            </div>
-            
+            {!data ? " " :data.map((item)=>(<ShoeContainer shoeInfo={item}/>))}
           </div>
 
         </div>

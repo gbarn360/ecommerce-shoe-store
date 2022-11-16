@@ -356,9 +356,19 @@
   -webkit-backdrop-filter: blur(8px) brightness(1.5);
 }
 
+/* =================================================================*/
+/*shoe_one */
 .shoe_background {
   background-color: black;
   min-height: 500px;
+}
+.shoeHeaderContainer{
+ background-color: rgb(227, 227, 227) ;
+}
+
+.shoeHeader{
+  font-size: 100px;
+  padding: 50px;
 }
 
 canvas {
@@ -501,6 +511,7 @@ canvas {
   overflow: hidden;
 }
 
+
 /* Footer ==============================================================*/
 
 .footerContainer {
@@ -546,4 +557,17 @@ canvas {
   text-align: center;
   font-size: 1.1em;
   padding: 20px 40px 20px;
+}
+
+/* =================================================================*/
+/*userPage */
+.shoeInfo{
+  display: flex;
+  flex-direction: column;
+  margin:30px;
+}
+.shoeInfo input{
+  margin:20px;
+  width: 200px;
+  height:20px
 }
