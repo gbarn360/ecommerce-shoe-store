@@ -459,3 +459,15 @@ canvas {
   overflow: hidden;
 }
 
+/* =================================================================*/
+/*userPage */
+.shoeInfo{
+  display: flex;
+  flex-direction: column;
+  margin:30px;
+}
+.shoeInfo input{
+  margin:20px;
+  width: 200px;
+  height:20px
+}

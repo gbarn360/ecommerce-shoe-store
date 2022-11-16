@@ -96,7 +96,7 @@ app.post("/api/addShoe", (req, res) => {
     const quantity = req.body.quantity;
     const color = req.body.color;
 
-    creator.addShoe(providerEmail, brandName, shoeName, shoeSize, shoePicURL, price, quantity, color) 
+    creator.checkShoeExists(providerEmail, brandName, shoeName, shoeSize, shoePicURL, price, quantity, color) 
     .then(result => {
         if(result == 1) {
             res.json({message: "Shoe already exists!"});
