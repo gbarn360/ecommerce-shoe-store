@@ -58,7 +58,7 @@ const ForgotPassword = () => {
                     </div>
 
                     <div className="signInButtonContainer">
-                        <button className="signinButton" onClick={() => { var result = credentials(); 
+                        <button id = 'reset' className="signinButton" onClick={() => { var result = credentials(); 
                             if (result == true) {
                                 sendInfo()
                             } 
