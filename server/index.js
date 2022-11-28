@@ -74,7 +74,7 @@ app.post("/apiForgotPassword", (req, res) => { //forgot password post request (i
     .then( result => {
         if (result == 1) {
             res.json({ message: "An email has been sent to update password" });
-            provider.forgotPassword(email);
+            provider.forgotPassword(email,newPassword);
             return;
         }
         if (result == 0) {

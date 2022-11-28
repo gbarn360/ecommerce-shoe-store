@@ -52,7 +52,7 @@ const AccountProvider = class {
 
 
     login(email, password) {
-
+        // this doesn't do shit. sometgin else acually handles the log in functionality
     }
 
     createAccount(email, password) {
@@ -66,9 +66,23 @@ const AccountProvider = class {
 
     }
 
-    forgotPassword(email, newPassword) {
-        const update_user_info = mongoose.model("Accounts", newAccountSchema);
-        update_user_info.updateOne(email); 
+    forgotPassword(email,newPassword) {
+        //new password update
+        const update_user_info = mongoose.model("Accounts", newAccountSchema); 
+
+        // doing the query to update password. 
+        update_user_info.updateOne(
+            {email:{$eq:email}},
+            {$set:{password:newPassword}},
+            function(err,result){
+                if(err){
+                    console.log("Something went wrong");
+                }
+                else{
+                    console.log("updated:",newPassword)
+                }
+            }
+        )
     }
 }
 module.exports = { AccountProvider };

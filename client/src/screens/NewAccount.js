@@ -40,7 +40,7 @@ const NewAccount = ({ credentials }) => {
                     </div>
 
                     <div className="signInButtonContainer">
-                        <button className="signinButton" onClick={() => { var result = credentials(); if (result == true) sendInfo() }}>Create</button>
+                        <button id='submite_data' className="signinButton" onClick={() => { var result = credentials(); if (result == true) sendInfo() }}>Create</button>
                     </div>
                     <div className="resultContainer">
                         <p className="result">{res == "Account created successfully" ? navigate("/account") : res}</p>
