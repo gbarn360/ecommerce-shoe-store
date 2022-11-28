@@ -4,7 +4,7 @@ const MongoDB_URL = "mongodb+srv://admin:patel@sikewearcluster.r7rsoch.mongodb.n
 
 
 const connectDB = async () => {
-    await mongoose.connect(MongoDB_URL,{
+    await mongoose.connect(MongoDB_URL, {
         useNewUrlParser: true,
         useUnifiedTopology: true,
     })
@@ -17,7 +17,7 @@ const addShoesSchema = new mongoose.Schema({
     brandName: String,
     shoeName: String,
     shoeSize: Number,
-    shoePicURL: String, 
+    shoePicURL: Buffer,
     price: Number,
     quantity: Number,
     color: String,
@@ -28,7 +28,7 @@ const ShoesCreation = mongoose.model("Shoes", addShoesSchema);
 const ShoesCreator = class {
 
     async checkShoeExists(providerEmail, brandName, shoeName, shoeSize, shoePicURL, price, quantity, color) {
-        let result; 
+        let result;
 
         result = await ShoesCreation.count({
             providerEmail: providerEmail,
@@ -48,25 +48,25 @@ const ShoesCreator = class {
         const newShoe = new ShoesCreation({
             providerEmail: providerEmail,
             brandName: brandName,
-            shoeName: shoeName, 
-            shoeSize: shoeSize, 
+            shoeName: shoeName,
+            shoeSize: shoeSize,
             shoePicURL: shoePicURL,
-            price: price, 
+            price: price,
             quantity: quantity,
             color: color
         });
         newShoe.save();
     }
 
-    async getShoes(){
+    async getShoes() {
         const data = await ShoesCreation.find();
         const count = await ShoesCreation.count();
         var shoes = new Array();
 
-        for(let i = 0; i < count; i++){
-            shoes[i] = {brand:data[i].brandName, name:data[i].shoeName,price:data[i].price, color: data[i].color};
-        }       
+        for (let i = 0; i < count; i++) {
+            shoes[i] = { brand: data[i].brandName, name: data[i].shoeName, price: data[i].price, color: data[i].color, image: data[i].shoePicURL };
+        }
         return shoes;
     }
 }
-module.exports = {ShoesCreator};
+module.exports = { ShoesCreator };
