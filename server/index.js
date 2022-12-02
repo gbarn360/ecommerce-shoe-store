@@ -1,9 +1,8 @@
-//const { application } = require('express');
 const express = require('express');
+const fs = require("fs")
 const app = express();
 const { AccountProvider } = require("./accountProvider"); //access mongodb js file
-const {ShoesCreator} = require("./shoesProvider");
-
+const { ShoesCreator } = require("./shoesProvider");
 //allows for server to have access to post/put requests
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
@@ -18,7 +17,6 @@ const creator = new ShoesCreator();
 app.get("/members", (req, res) => { //gets all members 
 
 })
-
 
 app.post("/apiPost", (req, res) => { //sign in post request
     const email = req.body.email; //get emails
@@ -71,17 +69,19 @@ app.post("/apiForgotPassword", (req, res) => { //forgot password post request (i
     console.log(newPassword);
 
     provider.checkMemberExists(email)
-    .then( result => {
-        if (result == 1) {
-            res.json({ message: "An email has been sent to update password" });
-            provider.forgotPassword(email,newPassword);
-            return;
-        }
-        if (result == 0) {
-            res.json({ message: "Account not found" });
-            return;
-        }
-    }) 
+
+        .then(result => {
+            if (result == 1) {
+                res.json({ message: "An email has been sent to update password" });
+                provider.forgotPassword(email, newPassword);
+                return;
+            }
+            if (result == 0) {
+                res.json({ message: "Account not found" });
+                return;
+            }
+        })
+
 
 
 });
@@ -91,26 +91,29 @@ app.post("/api/addShoe", (req, res) => {
     const brandName = req.body.brand;
     const shoeName = req.body.shoeName;
     const shoeSize = req.body.shoeSize;
-    const shoePicURL = req.body.shoeURL;
+    const shoePicURL = req.body.shoePicURL;
     const price = req.body.price;
     const quantity = req.body.quantity;
     const color = req.body.color;
 
-    creator.checkShoeExists(providerEmail, brandName, shoeName, shoeSize, shoePicURL, price, quantity, color) 
-    .then(result => {
-        if(result == 1) {
-            res.json({message: "Shoe already exists!"});
-            return;
-        }
-        if(result == 0) {
-            creator.addShoe(providerEmail, brandName, shoeName, shoeSize, shoePicURL, price, quantity, color);
-            res.json({message: "Shoe has been added!"});
-            return; 
-        }
-    })
+
+    creator.checkShoeExists(providerEmail, brandName, shoeName, shoeSize, shoePicURL, price, quantity, color)
+        .then(result => {
+            if (result == 1) {
+                // creator.updateShoe();
+                res.json({ message: "Shoe already exists!" });
+                return;
+            }
+            if (result == 0) {
+                creator.addShoe(providerEmail, brandName, shoeName, shoeSize, shoePicURL, price, quantity, color);
+                res.json({ message: "Shoe has been added!" });
+
+                return;
+            }
+        })
 });
 
-app.get('/shop/shoes',(req,res)=>{
+app.get('/shop/shoes', (req, res) => {
     creator.getShoes().then(result => res.json(result));
 });
 
