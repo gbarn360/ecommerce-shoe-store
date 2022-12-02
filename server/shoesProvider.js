@@ -16,7 +16,7 @@ const addShoesSchema = new mongoose.Schema({
     providerEmail: String,
     brandName: String,
     shoeName: String,
-    shoeSize: Number,
+    shoeSize: String,
     shoePicURL: Buffer,
     price: Number,
     quantity: Number,
@@ -44,6 +44,15 @@ const ShoesCreator = class {
         return result;
     }
 
+    //    async updateShoe(brandName, shoeName, shoeSize,quantity){
+    //         shoe = await ShoesCreation.find({
+    //             brandName: brandName,
+    //             shoeName: shoeName,
+    //             shoeSize: shoeSize,
+    //             quantity: quantity
+    //         });
+    //     }
+
     addShoe(providerEmail, brandName, shoeName, shoeSize, shoePicURL, price, quantity, color) {
         const newShoe = new ShoesCreation({
             providerEmail: providerEmail,
@@ -62,10 +71,18 @@ const ShoesCreator = class {
         const data = await ShoesCreation.find();
         const count = await ShoesCreation.count();
         var shoes = new Array();
+        var shoeSizes = new Array();
 
         for (let i = 0; i < count; i++) {
-            shoes[i] = { brand: data[i].brandName, name: data[i].shoeName, price: data[i].price, color: data[i].color, image: data[i].shoePicURL };
+
+            var sizes = data[i].shoeSize;
+            shoeSizes = sizes.split(" ");
+            for (let j = 0; j < shoeSizes.length; j++) {
+                shoeSizes[j] += " ";
+            }
+            shoes[i] = { brand: data[i].brandName, name: data[i].shoeName, price: data[i].price, color: data[i].color, image: data[i].shoePicURL, sizes: shoeSizes };
         }
+
         return shoes;
     }
 }
