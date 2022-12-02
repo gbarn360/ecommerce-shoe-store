@@ -6,7 +6,7 @@ function Dropdown({ info }) {
     <div className="panelRise">
       <p className="name">{info.name}</p>
       <p className="price">${info.price}.00</p>
-      <p className="sizes">Sizes:10 11 12</p>
+      <p className="sizes">{info.sizes}</p>
       <div className="btnContainer">
         <button className="addToCartBtn"><BsBagDash /></button>
       </div>

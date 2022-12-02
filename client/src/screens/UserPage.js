@@ -29,7 +29,16 @@ export default function UserPage() {
       .then(response => response.json())
       .then(data => setResponse(data.message));
   }
-  const display = () => { console.log(image) }
+  const clearFields = () => {
+    document.getElementsByName("email").item(0).value = ""
+    document.getElementsByName("brand_name").item(0).value = ""
+    document.getElementsByName("shoe_name").item(0).value = ""
+    document.getElementsByName("shoe_size").item(0).value = ""
+    document.getElementsByName("shoe_image").item(0).value = ""
+    document.getElementsByName("shoe_price").item(0).value = ""
+    document.getElementsByName("shoe_quantity").item(0).value = ""
+    document.getElementsByName("shoe_color").item(0).value = ""
+  }
 
 
 
@@ -53,7 +62,7 @@ export default function UserPage() {
 
       </div >
 
-      <button name='submite' onClick={() => sendInfo()}>Submit Shoe </button>
+      <button name='submite' onClick={() => [sendInfo(), clearFields()]}>Submit Shoe </button>
       <button className='addShoe' onClick={() => [navigate("/"), localStorage.setItem("user", false)]}>Sign out</button>
 
       {response}
