@@ -86,7 +86,7 @@
   justify-content: center;
   height: 100vh;
   position: auto;
- 
+
 }
 
 .centerfocus {
@@ -111,6 +111,7 @@
   display: flex;
   justify-content: center;
 }
+
 .passwordContainer {
   display: flex;
   justify-content: center;
@@ -189,12 +190,14 @@
   color: #151515;
 
 }
-.resultContainer{
+
+.resultContainer {
   display: flex;
   justify-content: center;
   margin-top: 20px;
 }
-.result{
+
+.result {
   color: rgb(194, 2, 2);
 }
 
@@ -235,15 +238,27 @@
 /*Cart*/
 .cart-container {
   text-align: center;
-  vertical-align: middle;
-
   width: 50em;
   height: 100%;
-  margin: 5em auto;
+  margin: 5em;
   padding-bottom: 2em;
 
   background-color: antiquewhite;
   box-shadow: 0 1px 1px 0 rgb(0 0 0 / 6%), 0 2px 5px 0 rgb(0 0 0 / 20%);
+}
+
+.userPaymentInfo {
+  margin-top: -110px;
+  background-color: antiquewhite;
+  width: 300px;
+  margin-left: 70%;
+  margin-top: -23.2%;
+}
+
+.userPaymentInfo input {
+  margin: 20px;
+  width: 200px;
+  height: 20px;
 }
 
 .cart-title {
@@ -251,7 +266,6 @@
   padding-bottom: .25em;
   font-size: 2em;
   font-weight: bold;
-
 }
 
 .cart-tab {
@@ -259,6 +273,24 @@
   width: 10em;
   height: 0.15em;
   margin: auto
+}
+
+.cartSize {
+  text-align: right;
+  margin-right: 70px;
+}
+
+.deleteItemContainer {
+  width: 10px;
+  height: 10px;
+  margin-right: 50px;
+  margin-top: 120px;
+}
+
+.deleteItem {
+  font-size: 30px;
+  background-color: transparent;
+  border: none;
 }
 
 .item1 {
@@ -318,6 +350,7 @@
 
 .product-price {
   margin-bottom: 1em;
+  margin-left: 100px;
 }
 
 .totalPrice {
@@ -389,17 +422,18 @@
   background-color: white;
   min-height: 500px;
 }
-.shoeHeaderContainer{
- background-color: white;
+
+.shoeHeaderContainer {
+  background-color: white;
 }
 
 .shoeHeaderContainer h2 {
   padding-left: 55px;
 }
 
-.shoeHeader{
+.shoeHeader {
   font-size: 100px;
-  padding: 50px;
+  margin-left: 40px;
 }
 
 .shoePageAddToCartBtn {
@@ -407,7 +441,7 @@
   background-color: black;
   float: right;
   margin-right: 100px;
-  margin-top: 100px;
+  margin-top: 35px;
   padding: 4px;
   width: 200px;
   height: 40px;
@@ -430,7 +464,6 @@
 }
 
 canvas {
-  margin-top: 100px;
   height: 500px;
 }
 
@@ -628,13 +661,14 @@ canvas {
 
 /* =================================================================*/
 /*userPage */
-.shoeInfo{
+.shoeInfo {
   display: flex;
   flex-direction: column;
-  margin:30px;
+  margin: 30px;
 }
-.shoeInfo input{
-  margin:20px;
+
+.shoeInfo input {
+  margin: 20px;
   width: 200px;
-  height:20px
+  height: 20px
 }

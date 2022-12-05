@@ -1,10 +1,11 @@
 import { Suspense } from "react";
 import NavBar from "../components/Navbar";
 import ModelRenderer from "../components/shoe_one_model"
-import {Canvas} from '@react-three/fiber'
-import {Stage} from '@react-three/drei'
+import { Canvas } from '@react-three/fiber'
+import { Stage } from '@react-three/drei'
 import { OrbitControls } from "@react-three/drei";
-import {useLocation} from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
+import { useState } from "react";
 
 import '../App.css'
 /*
@@ -20,19 +21,26 @@ function Shoe_one() {
 
   const location = useLocation();
 
+  const [cartItems, setCartItems] = useState(JSON.parse(localStorage.getItem("cart"))); //replace [] to clear
+
+  const addtoCart = (info) => {
+    setCartItems((prev) => [info, ...prev])
+    localStorage.setItem("cart", JSON.stringify(cartItems));
+  }
+
   return (
     <div>
-      <NavBar/>
+      <NavBar />
       <div className="shoeHeaderContainer">
-          <button className="shoePageAddToCartBtn">Add to Cart</button>
+        <button className="shoePageAddToCartBtn" onClick={() => addtoCart(location.state.shoeInfo)}>Add to Cart</button>
         <h1 className="shoeHeader">{location.state.shoeInfo.name}</h1>
-          <h2>Colors: {location.state.shoeInfo.color}</h2>
-          <h2>Quantity: {location.state.shoeInfo.quantity}</h2>
-          <h2>Size: {location.state.shoeInfo.shoeSize}</h2>
-          <h2 className="pagePrice">${location.state.shoeInfo.price}</h2>
+        <h2>Colors: {location.state.shoeInfo.color}</h2>
+        <h2>Quantity: {location.state.shoeInfo.quantity}</h2>
+        <h2>Size: {location.state.shoeInfo.shoeSize}</h2>
+        <h2 className="pagePrice">${location.state.shoeInfo.price}</h2>
       </div>
-      <Canvas className="shoe_background" camera={{fov:50,zoom:1.3, near: 1, far:1000}}>
-        <OrbitControls enableZoom={false} autoRotate={false}/>
+      <Canvas className="shoe_background" camera={{ fov: 50, zoom: 1.3, near: 1, far: 1000 }}>
+        <OrbitControls enableZoom={false} autoRotate={false} />
         <Suspense fallback={null}>
           <Stage>
             <ModelRenderer />

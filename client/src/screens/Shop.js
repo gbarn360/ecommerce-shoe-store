@@ -2,23 +2,30 @@ import NavBar from "../components/Navbar";
 import Footer from "../components/Footer";
 import Dropdown from "../components/Dropdown";
 import ShoeContainer from "../components/ShoeContainer";
-import React, { useState,useEffect} from "react";
-import {useLocation} from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 
 function Shop() {
   const location = useLocation();
-  const[data,setData] = useState([]);
-  async function getShoes(){
-  
-    let getInfo =  await fetch("/shop/shoes")
+  const [data, setData] = useState([]);
+  const [cartItems, setCartItems] = useState(JSON.parse(localStorage.getItem("cart")));
+
+  const addtoCart = (info) => {
+    setCartItems((prev) => [info, ...prev])
+    localStorage.setItem("cart", JSON.stringify(cartItems));
+  }
+  async function getShoes() {
+
+    let getInfo = await fetch("/shop/shoes")
     let result = getInfo.json();
-    
-     return result;
+
+    return result;
   }
 
-  useEffect(()=>{
-    getShoes().then(result =>setData(result))
-  },[]);
+  useEffect(() => {
+    getShoes().then(result => setData(result))
+    // localStorage.setItem("cart", '[{"name":"name","price":"price","color":"color","sizes":["size"]}]')
+  }, []);
 
   return (
     <div>
@@ -37,7 +44,7 @@ function Shop() {
             Image Header / Shoe Images
           </div>
           <div className="row">
-            {!data ? " " :data.map((item)=>(<ShoeContainer shoeInfo={item}/>))}
+            {!data ? " " : data.map((item) => (<ShoeContainer shoeInfo={item} additems={addtoCart} />))}
           </div>
         </div>
 
