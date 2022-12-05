@@ -30,7 +30,16 @@ export default function ManufacturerPage() {
       .then(response => response.json())
       .then(data => setResponse(data.message));
   }
-  const display = () => { console.log(image) }
+  const clearFields = () => {
+    document.getElementsByName("email").item(0).value = ""
+    document.getElementsByName("brand_name").item(0).value = ""
+    document.getElementsByName("shoe_name").item(0).value = ""
+    document.getElementsByName("shoe_size").item(0).value = ""
+    document.getElementsByName("shoe_image").item(0).value = ""
+    document.getElementsByName("shoe_price").item(0).value = ""
+    document.getElementsByName("shoe_quantity").item(0).value = ""
+    document.getElementsByName("shoe_color").item(0).value = ""
+  }
 
 
 
@@ -45,7 +54,7 @@ export default function ManufacturerPage() {
         <input type="text" name='brand_name' placeholder='brand name' onChange={(e) => setBrand(e.target.value)} />
         <input type="text" name='shoe_name' placeholder='shoe name' onChange={(e) => setName(e.target.value)} />
         <input type="text" name='shoe_size' placeholder='shoe size' onChange={(e) => setSize(e.target.value)} />
-        <input type="file" name='shoe_image' onChange={(e) => setImage(e.target.value)} />
+        <input type="text" name='shoe_image' placeholder="shoe image url" onChange={(e) => setImage(e.target.value)} />
         <input type="text" name='shoe_price' placeholder='shoe price' onChange={(e) => setPrice(e.target.value)} />
         <input type="text" name='shoe_quantity' placeholder='quantity' onChange={(e) => setQuantity(e.target.value)} />
         <input type="text" name='shoe_color' placeholder='color' onChange={(e) => setColor(e.target.value)} />
@@ -55,7 +64,7 @@ export default function ManufacturerPage() {
       </div>
 
       <button name='submite' onClick={() => sendInfo()}>Submit Shoe </button>
-      <button className='addShoe' onClick={() => [navigate("/"), localStorage.setItem(Roles.Manufacturer, false)]}>Sign out</button>
+      <button className='addShoe' onClick={() => [navigate("/"), localStorage.setItem("user", false)]}>Sign out</button>
 
       {response}
 

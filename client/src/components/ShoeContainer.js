@@ -1,16 +1,15 @@
 import React from 'react'
 import Dropdown from './Dropdown'
 import { useNavigate } from 'react-router-dom';
-import shoe from "../images/shoe.png";
+import { useState, useEffect } from 'react';
 
-
-export default function ShoeContainer({ shoeInfo }) {
+export default function ShoeContainer({ shoeInfo, additems }) {
   const navigate = useNavigate();
 
 
   return (
-    <div className="item" onClick={() => navigate("/shop/shoe_one", { state: { shoeInfo } })}>
-      <Dropdown info={shoeInfo} />
+    <div className="item" onClick={() => navigate("/shop/shoe_one", { state: { shoeInfo } })} >
+      <Dropdown info={shoeInfo} additems={additems} />
 
       <img src={shoeInfo.image} />
     </div>

@@ -125,14 +125,17 @@ app.post("/api/addShoe", (req, res) => {
     const quantity = req.body.quantity;
     const color = req.body.color;
 
+
     creator.checkShoeExists(providerEmail, brandName, shoeName, shoeSize, shoePicURL, price, quantity, color)
         .then(result => {
             if (result == 1) {
+                // creator.updateShoe();
                 res.json({ message: "Shoe already exists!" });
             }
             else {
                 creator.addShoe(providerEmail, brandName, shoeName, shoeSize, shoePicURL, price, quantity, color);
                 res.json({ message: "Shoe has been added!" });
+                return;
             }
         })
 });

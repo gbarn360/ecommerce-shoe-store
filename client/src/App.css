@@ -86,7 +86,7 @@
   justify-content: center;
   height: 100vh;
   position: auto;
- 
+
 }
 
 .centerfocus-signin {
@@ -123,6 +123,7 @@
   display: flex;
   justify-content: center;
 }
+
 .passwordContainer {
   display: flex;
   justify-content: center;
@@ -237,12 +238,14 @@
   color: #151515;
 
 }
-.resultContainer{
+
+.resultContainer {
   display: flex;
   justify-content: center;
   margin-top: 20px;
 }
-.result{
+
+.result {
   color: rgb(194, 2, 2);
 }
 
@@ -283,15 +286,27 @@
 /*Cart*/
 .cart-container {
   text-align: center;
-  vertical-align: middle;
-
   width: 50em;
   height: 100%;
-  margin: 5em auto;
+  margin: 5em;
   padding-bottom: 2em;
 
-  background-color: lightgray;
+  background-color: antiquewhite;
   box-shadow: 0 1px 1px 0 rgb(0 0 0 / 6%), 0 2px 5px 0 rgb(0 0 0 / 20%);
+}
+
+.userPaymentInfo {
+  margin-top: -110px;
+  background-color: antiquewhite;
+  width: 300px;
+  margin-left: 70%;
+  margin-top: -23.2%;
+}
+
+.userPaymentInfo input {
+  margin: 20px;
+  width: 200px;
+  height: 20px;
 }
 
 .cart-title {
@@ -299,14 +314,31 @@
   padding-bottom: .25em;
   font-size: 2em;
   font-weight: bold;
-
 }
 
 .cart-tab {
-  background-color: blueviolet;
+  background-color: saddlebrown;
   width: 10em;
   height: 0.15em;
   margin: auto
+}
+
+.cartSize {
+  text-align: right;
+  margin-right: 70px;
+}
+
+.deleteItemContainer {
+  width: 10px;
+  height: 10px;
+  margin-right: 50px;
+  margin-top: 120px;
+}
+
+.deleteItem {
+  font-size: 30px;
+  background-color: transparent;
+  border: none;
 }
 
 .item1 {
@@ -341,6 +373,7 @@
 }
 
 .product-name {
+  font-weight: bold;
   font-size: large;
   margin-bottom: 1em;
 }
@@ -365,6 +398,33 @@
 
 .product-price {
   margin-bottom: 1em;
+  margin-left: 100px;
+}
+
+.totalPrice {
+  text-align: right;
+  margin-right: 3rem;
+  margin-top: 1rem;
+  padding: 3px;
+}
+
+.placeOrderBtn {
+  background-color: black;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 3rem;
+  display: inline-block;
+  font-size: 20px;
+  margin: 4px 2px;
+  transition: 0.3s;
+}
+
+.placeOrderBtn:hover {
+  background-color: sandybrown;
+  transition: 0.3s;
 }
 
 /* =================================================================*/
@@ -407,20 +467,51 @@
 /* =================================================================*/
 /*shoe_one */
 .shoe_background {
-  background-color: black;
+  background-color: white;
   min-height: 500px;
 }
-.shoeHeaderContainer{
- background-color: rgb(227, 227, 227) ;
+
+.shoeHeaderContainer {
+  background-color: white;
 }
 
-.shoeHeader{
+.shoeHeaderContainer h2 {
+  padding-left: 55px;
+}
+
+.shoeHeader {
   font-size: 100px;
-  padding: 50px;
+  margin-left: 40px;
+}
+
+.shoePageAddToCartBtn {
+  border: none;
+  background-color: black;
+  float: right;
+  margin-right: 100px;
+  margin-top: 35px;
+  padding: 4px;
+  width: 200px;
+  height: 40px;
+  font-size: 30px;
+  display: inline-block;
+  color: white;
+  transition: 0.3s;
+  border-radius: 10px;
+}
+
+.shoePageAddToCartBtn:hover {
+  background-color: sandybrown;
+  transition: 0.3s;
+}
+
+.pagePrice {
+  color: red;
+  font-size: 30px;
+  padding-top: 30px;
 }
 
 canvas {
-  margin-top: 100px;
   height: 500px;
 }
 
@@ -460,7 +551,7 @@ canvas {
 .sidebarContainer {
   /*holds sidebar*/
   width: 15%;
-  background-color: red;
+  background-color: #151515;
   display: flex;
   justify-content: center;
 }
@@ -469,23 +560,23 @@ canvas {
   /*contains all shoe panels and slideshow panel*/
   width: 90%;
   height: auto;
-  background-color: #151515;
+  background-color: white;
   flex-direction: column;
   display: flex;
   align-items: center;
 }
 
 .sidebar {
-  width: 80%;
+  width: 90%;
   background-color: aliceblue;
   text-align: center;
 }
 
 .panel {
   /*slideshow*/
-  width: 80%;
+  width: 75%;
   height: 100px;
-  background-color: rgb(227, 227, 227);
+  background-color: cornsilk;
   margin: 40px 20px;
   padding: 100px;
   text-align: center;
@@ -498,60 +589,68 @@ canvas {
   height: 300px;
   display: flex;
   position: relative;
-
+  padding-bottom: 3rem;
 }
 
 .item {
   /*holds shoe image */
+  font-weight: bold;
   width: 35%;
   height: 90%;
-  background-color: rgb(227, 227, 227);
+  background-color: cornsilk;
   margin: 20px;
-  border-radius: 7px;
+  transition: 0.5s;
 }
 
 .item:hover .panelRise {
   height: 25%;
-  color: #151515;
-
+  color: white;
+  background-color: red;
+  transition: 0.5s;
 }
 
 
 .panelRise {
-  color: rgb(227, 227, 227);
+  color: cornsilk;
   width: auto;
-  height: 0px;
-  background-color: aquamarine;
-  border-radius: 7px;
-  transition: height 1s;
+  height: 0;
+  background-color: #151515;
+  transition: height 0.3s;
   align-content: center;
   padding-left: 15px;
   padding-top: 10px;
-
 }
 
 .name {
-  transition: color 1s;
+  transition: color 0.3s;
 }
 
 .price {
-  transition: color 1s;
+  transition: color 0.3s;
 }
 
 .sizes {
-  transition: color 1s;
+  transition: color 0.3s;
 }
 
 .addToCartBtn {
   border: none;
-  background-color: transparent;
-  width: 120px;
+  background-color: black;
+  padding: 4px;
+  width: 40px;
+  height: 40px;
   font-size: 30px;
-  transition: color .7s;
+  transition: color .3s;
   position: absolute;
-  margin-top: -50px;
-  margin-left: 455px;
-  color: transparent;
+  margin-top: 150px;
+  margin-left: 250px;
+  color: white;
+  border-radius: 100%;
+}
+
+.addToCartBtn:hover {
+  background-color: red;
+  color: white;
 }
 
 .mens {
@@ -565,6 +664,7 @@ canvas {
 .footerContainer {
   position: relative;
   width: 100%;
+  height: 175px;
   color: white;
   background: #151515;
   min-height: 100px;
@@ -609,14 +709,16 @@ canvas {
 
 /* =================================================================*/
 /*userPage */
-.shoeInfo{
+.shoeInfo {
   display: flex;
   flex-direction: column;
-  margin:30px;
+  margin: 30px;
 }
-.shoeInfo input{
-  margin:20px;
+
+.shoeInfo input {
+  margin: 20px;
   width: 200px;
+
   height:20px
 }
 
@@ -637,4 +739,5 @@ canvas {
 
 .role-change-title {
   text-align: center;
+  height: 20px
 }

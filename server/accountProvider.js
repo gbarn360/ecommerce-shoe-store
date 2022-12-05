@@ -5,7 +5,7 @@ const MongoDB_URL = "mongodb+srv://admin:patel@sikewearcluster.r7rsoch.mongodb.n
 
 
 const connectDB = async () => {
-    await mongoose.connect(MongoDB_URL,{
+    await mongoose.connect(MongoDB_URL, {
         useNewUrlParser: true,
         useUnifiedTopology: true,
     })
@@ -19,7 +19,7 @@ const newAccountSchema = new mongoose.Schema({
     lastName: String,
     email: String,
     password: String,
-    role: String,
+    adminPerm: Boolean,
 });
 
 
@@ -29,7 +29,7 @@ const AccountCreation = mongoose.model("Accounts", newAccountSchema);
 const AccountProvider = class {
 
     async setMemberAdmin(email) {
-        
+
     }
 
     async getUserRole(email, password) {
@@ -49,20 +49,20 @@ const AccountProvider = class {
 
         let result;
 
-        result = await AccountCreation.count({email:email, password:password});
+        result = await AccountCreation.count({ email: email, password: password });
 
-      return result;
+        return result;
     }
 
     //checks to see if user has an account already (create account)
-    async checkMemberExists (email){
+    async checkMemberExists(email) {
 
-      let result;
+        let result;
 
-      result = await AccountCreation.count({email:email});
+        result = await AccountCreation.count({ email: email });
 
-      return result;
-        
+        return result;
+
     }
 
 
@@ -78,40 +78,26 @@ const AccountProvider = class {
             lastName: lastName,
             email: email,
             password: password,
-            role: "user",
+            adminPerm: false
         });
         newAccount.save();
 
     }
 
-    updateRole(email, newRole) {
-        AccountCreation.updateOne(
-            {email: {$eq:email}},
-            {$set:{role: newRole}},
-            function(err, result) {
-                if(err) {
-                    console.log("Could not update role!");
-                } else {
-                    console.log("Role Updated!");
-                }
-            }
-        )
-    }
-
     forgotPassword(email,newPassword) {
         //new password update
-        const update_user_info = mongoose.model("Accounts", newAccountSchema); 
+        const update_user_info = mongoose.model("Accounts", newAccountSchema);
 
         // doing the query to update password. 
         update_user_info.updateOne(
-            {email:{$eq:email}},
-            {$set:{password:newPassword}},
-            function(err,result){
-                if(err){
+            { email: { $eq: email } },
+            { $set: { password: newPassword } },
+            function (err, result) {
+                if (err) {
                     console.log("Something went wrong");
                 }
-                else{
-                    console.log("updated:",newPassword)
+                else {
+                    console.log("updated:", newPassword)
                 }
             }
         )
