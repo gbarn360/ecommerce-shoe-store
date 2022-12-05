@@ -19,7 +19,7 @@ const newAccountSchema = new mongoose.Schema({
     lastName: String,
     email: String,
     password: String,
-    adminPerm: Boolean,
+    role: String,
 });
 
 
@@ -82,6 +82,20 @@ const AccountProvider = class {
         });
         newAccount.save();
 
+    }
+
+    updateRole(email, newRole) {
+        AccountCreation.updateOne(
+            {email: {$eq: email}},
+            {$set: {role: newRole}}, 
+            function(err, res) {
+                if(err) {
+                    console.log(err);
+                } else {
+                    console.log("Updated Role");
+                }
+            }
+        )
     }
 
     forgotPassword(email,newPassword) {

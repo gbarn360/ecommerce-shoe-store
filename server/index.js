@@ -34,6 +34,7 @@ app.post("/apiPost", async (req, res) => { //sign in post request
     console.log(email, password);
 
     var role = await provider.getUserRole(email, password);
+    console.log(role);
 
     provider.checkMembers(email, password)//check membership
         .then(result => {
