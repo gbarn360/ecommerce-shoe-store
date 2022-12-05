@@ -1,9 +1,10 @@
 import React from 'react'
 import { useNavigate } from "react-router-dom";
-import NavBar from "../components/Navbar";
+import NavBar from "../../components/Navbar";
 import { useState } from 'react';
+import { Roles } from '../../constants/roles';
 
-export default function UserPage() {
+export default function ManufacturerPage() {
 
   const navigate = useNavigate();
 
@@ -51,13 +52,13 @@ export default function UserPage() {
 
 
 
-      </div >
+      </div>
 
       <button name='submite' onClick={() => sendInfo()}>Submit Shoe </button>
-      <button className='addShoe' onClick={() => [navigate("/"), localStorage.setItem("user", false)]}>Sign out</button>
+      <button className='addShoe' onClick={() => [navigate("/"), localStorage.setItem(Roles.Manufacturer, false)]}>Sign out</button>
 
       {response}
 
-    </div >
+    </div>
   )
 }

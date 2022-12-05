@@ -89,13 +89,25 @@
  
 }
 
+.centerfocus-signin {
+  margin-top: 2%;
+  width: 35%;
+  background-color: aliceblue;
+  box-shadow: 1px 0px 20px rgb(168, 168, 168);
+  padding-bottom: 6%;
+  max-height: 25em;
+  height: 100%;
+  border-radius: 10px;
+}
+
 .centerfocus {
   margin-top: 2%;
   width: 35%;
   background-color: aliceblue;
   box-shadow: 1px 0px 20px rgb(168, 168, 168);
   padding-bottom: 6%;
-  max-height: 400px;
+  max-height: 30em;
+  height: 100%;
   border-radius: 10px;
 }
 
@@ -114,6 +126,42 @@
 .passwordContainer {
   display: flex;
   justify-content: center;
+}
+.firstNameContainer {
+  display: flex;
+  justify-content: center;
+}
+.lastNameContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.first {
+  height: 25px;
+  width: 50%;
+  border: hidden;
+  border-bottom: solid rgb(126, 124, 124) 1px;
+  margin: 20px;
+  background-color: transparent;
+  padding-left: 10px;
+}
+
+.first::placeholder {
+  color: gray;
+}
+
+.last {
+  height: 25px;
+  width: 50%;
+  border: hidden;
+  border-bottom: solid rgb(126, 124, 124) 1px;
+  margin: 20px;
+  background-color: transparent;
+  padding-left: 10px;
+} 
+
+.last::placeholder {
+  color: gray;
 }
 
 .signinEmail {
@@ -570,4 +618,23 @@ canvas {
   margin:20px;
   width: 200px;
   height:20px
+}
+
+/*Admin Page*/
+.role-change-container {
+  width: 100%;
+  max-width: 50em;
+  background-color: rgb(227, 227, 227);
+  justify-content: center;
+  margin: 5em auto;
+  position: auto;
+}
+
+.role {
+  display: block;
+  margin: 0 auto;
+}
+
+.role-change-title {
+  text-align: center;
 }

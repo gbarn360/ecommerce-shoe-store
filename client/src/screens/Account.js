@@ -1,6 +1,8 @@
 import NavBar from "../components/Navbar";
 import { useState ,useEffect} from "react";
 import { useNavigate } from "react-router-dom";
+import {Roles} from "../constants/roles";
+import ManufacturerPage from './RolePages/ManufacturerPage';
 const Account = ({ credentials}) => {
 
 
@@ -28,6 +30,24 @@ const Account = ({ credentials}) => {
       .then(data => setResponse(data.message));
   }
 
+  const navigateToRolePage = ()  =>{
+    if(res === Roles.User) {
+      //UserPage(email,password);
+      navigate("/UserPage");
+      localStorage.setItem(Roles.User,true);
+      return;
+    } else if(res === Roles.Manufacturer) {
+      navigate("/ManufacturerPage");
+      localStorage.setItem(Roles.Manufacturer, true);
+      return;
+    } else if(res === Roles.Admin) {
+      navigate("/AdminPage");
+      localStorage.setItem(Roles.Admin, true);
+      return;
+    } else {
+      return res;
+    }
+  }
 
 
   return (
@@ -35,7 +55,7 @@ const Account = ({ credentials}) => {
       <NavBar signin = {signedIn}/>
 
       <div className="accountContainer">
-        <div className="centerfocus">
+        <div className="centerfocus-signin">
 
           <h1 className="signInText">Welcome back</h1>
 
@@ -57,8 +77,7 @@ const Account = ({ credentials}) => {
             <a href="http://localhost:3000/account/resetPassword" className="forgotPasswordButton">forgot password?</a>
           </div>
           <div className="resultContainer">
-            <div className="result">{res == "found" ? [navigate("/"),localStorage.setItem("user",true)]:res}</div>
-
+            <div className="result"> {navigateToRolePage()} </div>
           </div>
         </div>
       </div>

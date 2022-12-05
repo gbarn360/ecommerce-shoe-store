@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const { Roles } = require("./constants");
 
 const MongoDB_URL = "mongodb+srv://admin:patel@sikewearcluster.r7rsoch.mongodb.net/?retryWrites=true&w=majority";
 
@@ -14,10 +15,13 @@ const connectDB = async () => {
 connectDB();
 
 const newAccountSchema = new mongoose.Schema({
+    firstName: String,
+    lastName: String,
     email: String,
     password: String,
-    adminPerm: Boolean,
+    role: String,
 });
+
 
 
 const AccountCreation = mongoose.model("Accounts", newAccountSchema);
@@ -28,6 +32,18 @@ const AccountProvider = class {
         
     }
 
+    async getUserRole(email, password) {
+
+        return await AccountCreation.findOne({ email, password }).then(result => result.role).catch(_ => null);
+        //return userRole;
+    }
+
+    async getUserName(email, password) {
+        return await AccountCreation.findOne({email, password}).then(result => result.firstName + " " + result.lastName).catch(_ => null);
+    } 
+
+    
+    // {res == "found" ? [navigate("/"),localStorage.setItem("user",true)]:res}
     //checks to see if user exists (sign in)
     async checkMembers(email, password) {
 
@@ -55,15 +71,31 @@ const AccountProvider = class {
         // this doesn't do shit. sometgin else acually handles the log in functionality
     }
 
-    createAccount(email, password) {
+    createAccount(firstName, lastName, email, password) {
 
         const newAccount = new AccountCreation({
+            firstName: firstName,
+            lastName: lastName,
             email: email,
             password: password,
-            adminPerm: false
+            role: "user",
         });
         newAccount.save();
 
+    }
+
+    updateRole(email, newRole) {
+        AccountCreation.updateOne(
+            {email: {$eq:email}},
+            {$set:{role: newRole}},
+            function(err, result) {
+                if(err) {
+                    console.log("Could not update role!");
+                } else {
+                    console.log("Role Updated!");
+                }
+            }
+        )
     }
 
     forgotPassword(email,newPassword) {
