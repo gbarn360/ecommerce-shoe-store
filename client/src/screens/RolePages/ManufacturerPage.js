@@ -64,7 +64,7 @@ export default function ManufacturerPage() {
       </div>
 
       <button name='submite' onClick={() => sendInfo()}>Submit Shoe </button>
-      <button className='addShoe' onClick={() => [navigate("/"), localStorage.setItem("user", false)]}>Sign out</button>
+      <button className='addShoe' onClick={() => [navigate("/"), localStorage.setItem(Roles.Manufacturer, false)]}>Sign out</button>
 
       {response}
 

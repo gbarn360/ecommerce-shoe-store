@@ -75,7 +75,7 @@ function Home() {
       </div>
       <div className="userPaymentInfo">
         <input id="creditCard" type="text" placeholder="Credit Card Number" onChange={(e) => setCreditCard(e.target.value)} />
-        <input type="text" placeholder="SSN" onChange={(e) => setSSN(e.target.value)} />
+        <input type="text" placeholder="security number" onChange={(e) => setSSN(e.target.value)} />
         <input type="text" placeholder="mm/yy" onChange={(e) => setMoYr(e.target.value)} />
       </div>
     </div>

@@ -39,10 +39,10 @@ const AccountProvider = class {
     }
 
     async getUserName(email, password) {
-        return await AccountCreation.findOne({email, password}).then(result => result.firstName + " " + result.lastName).catch(_ => null);
-    } 
+        return await AccountCreation.findOne({ email, password }).then(result => result.firstName + " " + result.lastName).catch(_ => null);
+    }
 
-    
+
     // {res == "found" ? [navigate("/"),localStorage.setItem("user",true)]:res}
     //checks to see if user exists (sign in)
     async checkMembers(email, password) {
@@ -71,14 +71,14 @@ const AccountProvider = class {
         // this doesn't do shit. sometgin else acually handles the log in functionality
     }
 
-    createAccount(firstName, lastName, email, password) {
+    createAccount(firstName, lastName, email, password, role) {
 
         const newAccount = new AccountCreation({
             firstName: firstName,
             lastName: lastName,
             email: email,
             password: password,
-            adminPerm: false
+            role: role
         });
         newAccount.save();
 
@@ -86,10 +86,10 @@ const AccountProvider = class {
 
     updateRole(email, newRole) {
         AccountCreation.updateOne(
-            {email: {$eq: email}},
-            {$set: {role: newRole}}, 
-            function(err, res) {
-                if(err) {
+            { email: { $eq: email } },
+            { $set: { role: newRole } },
+            function (err, res) {
+                if (err) {
                     console.log(err);
                 } else {
                     console.log("Updated Role");
@@ -98,7 +98,7 @@ const AccountProvider = class {
         )
     }
 
-    forgotPassword(email,newPassword) {
+    forgotPassword(email, newPassword) {
         //new password update
         const update_user_info = mongoose.model("Accounts", newAccountSchema);
 

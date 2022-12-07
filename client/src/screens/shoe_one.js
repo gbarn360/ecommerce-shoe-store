@@ -35,8 +35,7 @@ function Shoe_one() {
         <button className="shoePageAddToCartBtn" onClick={() => addtoCart(location.state.shoeInfo)}>Add to Cart</button>
         <h1 className="shoeHeader">{location.state.shoeInfo.name}</h1>
         <h2>Colors: {location.state.shoeInfo.color}</h2>
-        <h2>Quantity: {location.state.shoeInfo.quantity}</h2>
-        <h2>Size: {location.state.shoeInfo.shoeSize}</h2>
+        <h2>Size: {location.state.shoeInfo.sizes}</h2>
         <h2 className="pagePrice">${location.state.shoeInfo.price}</h2>
       </div>
       <Canvas className="shoe_background" camera={{ fov: 50, zoom: 1.3, near: 1, far: 1000 }}>

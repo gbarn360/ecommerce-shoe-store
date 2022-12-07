@@ -80,7 +80,7 @@ const ShoesCreator = class {
             for (let j = 0; j < shoeSizes.length; j++) {
                 shoeSizes[j] += " ";
             }
-            shoes[i] = { brand: data[i].brandName, name: data[i].shoeName, price: data[i].price, color: data[i].color, image: data[i].shoePicURL, sizes: shoeSizes };
+            shoes[i] = { brand: data[i].brandName, name: data[i].shoeName, price: data[i].price, color: data[i].color, image: data[i].shoePicURL, sizes: shoeSizes, quantity: data[i].quantity };
         }
 
         return shoes;

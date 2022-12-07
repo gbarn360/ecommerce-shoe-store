@@ -4,6 +4,7 @@ import Dropdown from "../components/Dropdown";
 import ShoeContainer from "../components/ShoeContainer";
 import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
+import shoe from "../images/shoe.png";
 
 function Shop() {
   const location = useLocation();
@@ -33,15 +34,11 @@ function Shop() {
 
       <div className="shopContainer">
 
-        <div className="sidebarContainer">
-          <div className="sidebar">
-            Sidebar
-          </div>
-        </div>
+
 
         <div className="mainPanelContainer">
           <div className="panel">
-            Image Header / Shoe Images
+            <img src={shoe} alt="image not loading" className="imageShoe" />
           </div>
           <div className="row">
             {!data ? " " : data.map((item) => (<ShoeContainer shoeInfo={item} additems={addtoCart} />))}

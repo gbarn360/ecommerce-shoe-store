@@ -39,14 +39,14 @@ app.post("/apiPost", async (req, res) => { //sign in post request
     provider.checkMembers(email, password)//check membership
         .then(result => {
             if (result >= 1) {
-                if(role === Roles.User) {
+                if (role === Roles.User) {
                     res.json({ message: Roles.User }); //respond with success message
-                } else if(role === Roles.Manufacturer){
+                } else if (role === Roles.Manufacturer) {
                     res.json({ message: Roles.Manufacturer }); //respond with success message
-                } else if(role === Roles.Admin) {
+                } else if (role === Roles.Admin) {
                     res.json({ message: Roles.Admin }); //respond with success message
                 } else {
-                    res.json({message: "Contact Sike Devs, You have an invalid role!"});
+                    res.json({ message: "Contact Sike Devs, You have an invalid role!" });
                 }
                 //res.json({ message: "found" }); //respond with success message
             } else {
@@ -71,7 +71,7 @@ app.post("/apiNewAccount", (req, res) => { //create new account post request
                 res.json({ message: "Account already exists" }); //respond with error message
             }
             else { //account doesn't exist
-                provider.createAccount(firstName, lastName, email, password); //save account to database
+                provider.createAccount(firstName, lastName, email, password, "user"); //save account to database
                 res.json({ message: "Account created successfully" }); //respond with success message
             }
         })
@@ -106,12 +106,12 @@ app.post("/api/updateRole", (req, res) => {
     console.log(newRole);
     provider.checkMemberExists(email)
         .then(result => {
-            if(result == 1) {
-                res.json({message: "Role has been changed!"});
+            if (result == 1) {
+                res.json({ message: "Role has been changed!" });
                 provider.updateRole(email, newRole);
-                
+
             } else {
-                res.json({message: "Account Not Found!"});
+                res.json({ message: "Account Not Found!" });
             }
         })
 });
