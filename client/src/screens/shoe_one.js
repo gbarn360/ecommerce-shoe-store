@@ -1,4 +1,4 @@
-import { Suspense } from "react";
+import { Suspense, useEffect } from "react";
 import NavBar from "../components/Navbar";
 import ModelRenderer from "../components/shoe_one_model"
 import { Canvas } from '@react-three/fiber'
@@ -8,14 +8,7 @@ import { useLocation } from 'react-router-dom';
 import { useState } from "react";
 
 import '../App.css'
-/*
-function Shoe_one() {
-  const gltf = useLoader(OBJLoader, '../shoe/model_stuff/shoe_model.obj')
-  return (
-    <Primitive object={gltf}/>
-  );
-}
-*/
+
 
 function Shoe_one() {
 
@@ -23,6 +16,12 @@ function Shoe_one() {
 
   const [cartItems, setCartItems] = useState(JSON.parse(localStorage.getItem("cart"))); //replace [] to clear
 
+
+  useEffect(() => {
+    if (localStorage.getItem("cart") == null) {
+      setCartItems([]);
+    }
+  }, [])
   const addtoCart = (info) => {
     setCartItems((prev) => [info, ...prev])
     localStorage.setItem("cart", JSON.stringify(cartItems));

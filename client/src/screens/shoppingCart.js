@@ -13,11 +13,21 @@ function Home() {
   const [moYr, setMoYr] = useState("")
 
 
-  useEffect(() => { getPrice() }, [cartItems])
+  useEffect(() => {
+    getPrice();
+    if (localStorage.getItem("cart") == null) {
+      setCartItems([]);
+    }
+
+
+  }, [cartItems])//cartItems
+
 
   const getPrice = () => {
     let total = 0;
-    cartItems.map((item) => { total += item.price })
+    if (cartItems != null) {
+      cartItems.map((item) => { total += item.price })
+    }
     setPrice(total)
   }
 
@@ -65,9 +75,9 @@ function Home() {
         <div className="cart-tab">
         </div>
         <div className="cart-info">
-          <p className="cartSize"> number of items: {cartItems.length} </p>
+          <p className="cartSize"> number of items: {cartItems == null ? 0 : cartItems.length} </p>
 
-          {cartItems.map((item) => (<CartItems imageURL={shoes1} productName={item.name} productColor={item.color} productSize={item.size} productPrice={item.price} deleteItem={deleteItem} />))}
+          {cartItems == null ? " " : cartItems.map((item) => (<CartItems imageURL={shoes1} productName={item.name} productColor={item.color} productSize={item.size} productPrice={item.price} deleteItem={deleteItem} />))}
 
         </div>
         <h3 className="totalPrice">Total Price:{price}</h3>
