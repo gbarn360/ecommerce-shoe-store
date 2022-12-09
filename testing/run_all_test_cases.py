@@ -1,5 +1,5 @@
 import os
-test_cases = ["sign_up.py","log_in.py","reset_password.py","delete_user.py","user_page.py","delete_product.py"]
+test_cases = ["sign_up.py","log_in.py","reset_password.py","change_role_to_manufacturer.py","manufacturer.py","delete_user.py","delete_product.py"]
 
 path = "../testing/"
 

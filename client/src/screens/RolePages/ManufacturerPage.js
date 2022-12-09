@@ -50,14 +50,14 @@ export default function ManufacturerPage() {
 
 
       <div className="shoeInfo">
-        <input type="text" name='email' placeholder='providerEmail' onChange={(e) => setEmail(e.target.value)} />
-        <input type="text" name='brand_name' placeholder='brand name' onChange={(e) => setBrand(e.target.value)} />
+        <input type="text"  name='email' placeholder='providerEmail' onChange={(e) => setEmail(e.target.value)} />
+        <input type="text"  name='brand_name' placeholder='brand name' onChange={(e) => setBrand(e.target.value)} />
         <input type="text" name='shoe_name' placeholder='shoe name' onChange={(e) => setName(e.target.value)} />
         <input type="text" name='shoe_size' placeholder='shoe size' onChange={(e) => setSize(e.target.value)} />
-        <input type="text" name='shoe_image' placeholder="shoe image url" onChange={(e) => setImage(e.target.value)} />
-        <input type="text" name='shoe_price' placeholder='shoe price' onChange={(e) => setPrice(e.target.value)} />
-        <input type="text" name='shoe_quantity' placeholder='quantity' onChange={(e) => setQuantity(e.target.value)} />
-        <input type="text" name='shoe_color' placeholder='color' onChange={(e) => setColor(e.target.value)} />
+        <input type="text"  name='shoe_image' placeholder="shoe image url" onChange={(e) => setImage(e.target.value)} />
+        <input type="text"  name='shoe_price' placeholder='shoe price' onChange={(e) => setPrice(e.target.value)} />
+        <input type="text"  name='shoe_quantity' placeholder='quantity' onChange={(e) => setQuantity(e.target.value)} />
+        <input type="text"  name='shoe_color' placeholder='color' onChange={(e) => setColor(e.target.value)} />
 
 
 

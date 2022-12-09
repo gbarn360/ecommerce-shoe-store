@@ -4,6 +4,8 @@ from selenium.webdriver.common.keys import Keys
 import pymongo
 
 
+email = "hello@gmail.com"
+
 # webdriver_path = "chromedriver.exe"
 
 # driver = webdriver.Chrome(webdriver_path)
@@ -26,8 +28,8 @@ import pymongo
 client = pymongo.MongoClient("mongodb+srv://admin:patel@sikewearcluster.r7rsoch.mongodb.net/?retryWrites=true&w=majority")
 data = client.test.accounts
 
-data.delete_one({"email":"hello@gmail.com"})
-entry = data.find_one({"email":"hello@gmail.com"})
+data.delete_one({"email":email})
+entry = data.find_one({"email":email})
 try:
     if( not entry):
         print("Delete User : pass")

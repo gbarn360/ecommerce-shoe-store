@@ -13,7 +13,7 @@ export default function UserPage() {
     <div>
       <NavBar />
       <div>User Page!</div>
-      <button className='addShoe' onClick={() => [navigate("/"), localStorage.setItem(Roles.User, false)]}>Sign out</button>
+      <button className='addShoe' name="sign_out" onClick={() => [navigate("/"), localStorage.setItem(Roles.User, false)]}>Sign out</button>
 
     </div>
   )

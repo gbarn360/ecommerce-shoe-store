@@ -33,9 +33,9 @@ export default function AdminPage({credentials}) {
             <input className="signinEmail" id="signinEmail" placeholder="Email" onChange={(e) => setEmail(e.target.value)} />
         </div>
         <select name='role' id='role' onChange={e => setNewRole(e.target.value)}> 
-            <option value={Roles.User}>User</option>
-            <option value={Roles.Manufacturer}>Manufacturer</option>
-            <option value={Roles.Admin}>Admin</option>
+            <option id = "user" value={Roles.User}>User</option>
+            <option id = "manufacturer" value={Roles.Manufacturer}>Manufacturer</option>
+            <option id = "admin" value={Roles.Admin}>Admin</option>
         </select>
 
         <div className="signInButtonContainer">
@@ -45,7 +45,7 @@ export default function AdminPage({credentials}) {
             {res}
         </div>
       </div>
-      <button className='addShoe' onClick={() => [navigate("/"), localStorage.setItem(Roles.Admin, false)]}>Sign out</button>
+      <button id="sign_out" className='addShoe' onClick={() => [navigate("/"), localStorage.setItem(Roles.Admin, false)]}>Sign out</button>
 
     </div>
   )

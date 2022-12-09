@@ -1,0 +1,1 @@
+- pip3 install selenium==3.141.0
