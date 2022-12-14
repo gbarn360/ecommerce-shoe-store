@@ -73,8 +73,8 @@ const Account = ({ credentials}) => {
 
 
           <div className="newAccount">
-            <a href="http://localhost:3000/account/newAccount" class="createAccountButton">no account? </a>
-            <a href="http://localhost:3000/account/resetPassword" className="forgotPasswordButton">forgot password?</a>
+            <a href="/account/newAccount" class="createAccountButton">no account? </a>
+            <a href="/account/resetPassword" className="forgotPasswordButton">forgot password?</a>
           </div>
           <div className="resultContainer">
             <div className="result"> {navigateToRolePage()} </div>

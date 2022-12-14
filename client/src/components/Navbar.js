@@ -5,13 +5,13 @@ function NavBar({ home }) {
 
   const signedInPage = () => {
     if(localStorage.getItem(Roles.User) == "true") {
-      return <a href = "http://localhost:3000/UserPage">Account</a>;
+      return <a href = "/UserPage">Account</a>;
     } else if(localStorage.getItem(Roles.Manufacturer) == "true") {
-      return <a href = "http://localhost:3000/ManufacturerPage">Account</a>
+      return <a href = "/ManufacturerPage">Account</a>
     } else if(localStorage.getItem(Roles.Admin) == "true") {
-      return <a href = "http://localhost:3000/AdminPage">Account</a>
+      return <a href = "/AdminPage">Account</a>
     } else {
-      return <a href = "http://localhost:3000/Account">Account</a>
+      return <a href = "/Account">Account</a>
     }
   }
 
@@ -19,14 +19,14 @@ function NavBar({ home }) {
   return (
     <div className="NavContainer">
       <div className="navElements">
-        <a href="http://localhost:3000/">Home</a>
-        <a href="http://localhost:3000/shop">Shop</a>
+        <a href="/">Home</a>
+        <a href="/shop">Shop</a>
 
-        {/*localStorage.getItem("user") == "true" ? <a href = "http://localhost:3000/UserPage">Account</a> : <a href = "http://localhost:3000/Account">Account</a>*/}
+        {/*localStorage.getItem("user") == "true" ? <a href = "/UserPage">Account</a> : <a href = "/Account">Account</a>*/}
         {signedInPage()}
       </div>
       <div className="bagContainer">
-        <a href="http://localhost:3000/shoppingCart" className="bag"><BsBagDash /></a>
+        <a href="/shoppingCart" className="bag"><BsBagDash /></a>
       </div>
 
 

@@ -20,15 +20,15 @@ function Home() {
         </div>
         <div className="categoryContainer">
 
-          <div onClick={() => { window.location.href = "http://localhost:3000/shop" }} className="category">
+          <div onClick={() => { window.location.href = "/shop" }} className="category">
               <img src={men}/>
               For MEN
           </div>
-          <div onClick={() => { window.location.href = "http://localhost:3000/shop" }} className="category">
+          <div onClick={() => { window.location.href = "/shop" }} className="category">
               <img src={women}/>
               For WOMEN
           </div>
-          <div onClick={() => { window.location.href = "http://localhost:3000/shop" }} className="category">
+          <div onClick={() => { window.location.href = "/shop" }} className="category">
               <img src={all}/>
               For ALL
           </div>
